@@ -13,11 +13,15 @@ class PersonAdmin(admin.ModelAdmin):
     list_filter = ['imie', 'nazwisko']
 
 class WydatkiAdmin(admin.ModelAdmin):
-    search_fields = ['kwota', 'kategoria', 'osoba__imie']
+    search_fields = ['kwota', 'kategoria']
     list_filter = ['kategoria']
+
+class PrzychodyAdmin(admin.ModelAdmin):
+    search_fields = ['nazwa_przychodu', 'osoba']
+    list_filter = ['nazwa_przychodu', 'osoba']
 
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Kategoria)
 admin.site.register(Wydatki,WydatkiAdmin)
-admin.site.register(Przychody)
+admin.site.register(Przychody, PrzychodyAdmin)
 admin.site.register(Cele)
