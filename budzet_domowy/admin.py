@@ -8,9 +8,15 @@ from .models import Wydatki
 from .models import Przychody
 from .models import Cele
 # Register your models here.
+class PersonAdmin(admin.ModelAdmin):
+    search_fields = ['imie', 'nazwisko', 'email']
+    list_filter = ['imie', 'nazwisko']
 
-admin.site.register(Person)
+class WydatkiAdmin(admin.ModelAdmin):
+    search_fields = ['kwota', 'kategoria', 'osoba__imie']
+
+admin.site.register(Person, PersonAdmin)
 admin.site.register(Kategoria)
-admin.site.register(Wydatki)
+admin.site.register(Wydatki,WydatkiAdmin)
 admin.site.register(Przychody)
 admin.site.register(Cele)

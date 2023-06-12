@@ -30,7 +30,7 @@ class Kategoria(models.Model):
 class Wydatki(models.Model):
     kwota = models.FloatField(unique=True)
     kategoria = models.OneToOneField(Kategoria, unique=True, null=True)
-    Osoba = models.OneToOneField(Person, unique=True, null=True)
+    Osoba = models.ForeignKey(Person, on_delete=models.CASCADE, unique=True, null=True)
 
     def __str__(self):
         return f"{self.kwota} pln, {self.kategoria}"
