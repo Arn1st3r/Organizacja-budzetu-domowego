@@ -14,6 +14,7 @@ class PersonAdmin(admin.ModelAdmin):
 
 class WydatkiAdmin(admin.ModelAdmin):
     search_fields = ['kwota', 'kategoria', 'osoba__imie']
+    list_filter = ['kategoria']
 
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Kategoria)
