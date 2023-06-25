@@ -2,11 +2,10 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from .models import Person
-from .models import Wydatki,Kategoria, Przychody
 from django.http import HttpResponse
 from .fields import WydatkiForm, PrzychodyForm
 from django.db.models import Sum
+from .models import Wydatki, Kategoria, lista_miesiecy, Przychody
 
 
 # Create your views here.
@@ -15,9 +14,24 @@ def przychody_view(request):
     if form.is_valid():
         form.save(commit=True)
         form = PrzychodyForm()
+        #Wydobycie wartosci 'przychod' dla nazwy przychodu
+    przychody_per_name = (
+        Przychody.objects
+        .values('nazwa_przychodu')
+        .annotate(total_przychod=Sum('przychod'))
+    )
+        #Wydobycie wartosci 'przychod' dla miesiaca oraz kategorii
+    przychody_per_month = (
+        Przychody.objects
+        .values('miesiac', 'rok')
+        .annotate(total_przychod=Sum('przychod'))
+    )
+
     context = {
         'form': form,
-        }
+        'przychody_per_name': przychody_per_name,
+        'przychody_per_month': przychody_per_month,
+    }
 
     return render(request, 'przychody.html', context)
 
@@ -42,13 +56,19 @@ def wydatki_view(request):
         entry['kategoria'] = category_name
         kwota_per_category_with_names.append(entry)
 
+    # Wydobycie wartości 'kwota' dla każdego miesiąca
+    kwota_per_month = (
+        Wydatki.objects
+        .values('miesiac') 
+        .annotate(total_kwota=Sum('kwota'))
+    )
+
     context = {
         'form': form,
         'kwota_per_category': kwota_per_category_with_names,
+        'kwota_per_month': kwota_per_month,
     }
     return render(request, 'wydatki.html', context)
-
-
 def statistics_view(request):
     context = {
         

@@ -71,7 +71,7 @@
         }
 
         select {
-            width: 103%;
+            width: 101%;
         }
 
         button {
@@ -84,7 +84,7 @@
         }
 
         .reset {
-            margin-left: 160px;
+            margin-left: 500px;
         }
 
         footer {
@@ -93,7 +93,7 @@
             background-color: lightgray;
             height: 55px;
             text-align: center;
-            margin-top: 55vh;
+            margin-top: 32vh;
         }
     </style>
 </head>
@@ -116,11 +116,30 @@
                 <button type="submit" onclick=form_alert()>Dodaj</button>
                 <button class="reset" type="reset">Wyczyść</button>
             </form>
+            <h1>Suma przychodów dla każdego miesiąca i roku</h1>
+            <table>
+                <tr>
+                    <th>Miesiąc</th>
+                    <th>Rok</th>
+                    <th>Suma przychodów</th>
+                </tr>
+                {% for entry in przychody_per_month %}
+                <tr>
+                    <td>{{ entry.miesiac }}</td>
+                    <td>{{ entry.rok }}</td>
+                    <td>{{ entry.total_przychod }} zł</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">Brak danych.</td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
     <script>
         function form_alert() {
-            alert("Przychód wysłany!")
+            alert("Przychód zapisany!")
         }
     </script>
     <footer>

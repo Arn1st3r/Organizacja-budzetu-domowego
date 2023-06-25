@@ -32,3 +32,4 @@ urlpatterns = [
 
 admin.site.site_header = "Admin panel"
 admin.site.site_title = "Admin panel"
+admin.site.index_title = "Organizacja Budżetu Domowego"

@@ -102,7 +102,7 @@
     <nav>
         <ul class="menu">
             <li><a href="/">Strona główna</a></li>
-            <li><a href="/wydatki">Wydatki</a></li>
+            <li><a href="">Wydatki</a></li>
             <li><a href="/przychody">Przychody</a></li>
             <li><a href="/admin">Panel admina</a></li>
         </ul>
@@ -113,8 +113,8 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Dodaj</button>
-                <button class="reset" onclick=form_alert() type="reset">Wyczyść</button>
+                <button type="submit" onclick=form_alert()>Dodaj</button>
+                <button class="reset" type="reset">Wyczyść</button>
             </form>
         </div>
         <div class="summary">
@@ -131,11 +131,17 @@
                 </tr>
                 {% endfor %}
             </table>
+            <h2>Suma wydatków według miesiąca:</h2>
+            <ul>
+                {% for entry in kwota_per_month %}
+                <li>{{ entry.miesiac }}: {{ entry.total_kwota }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
     <script>
         function form_alert() {
-            alert("Przychód wysłany!")
+            alert("Wydatek zapisany!")
         }
     </script>
     <footer>
