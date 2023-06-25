@@ -77,11 +77,13 @@ class Przychod(models.Model):
 
 class Cele(models.Model):
     nazwa = models.CharField(max_length=200)
-    kwota = models.FloatField(unique=True)
+    kwota = models.FloatField(null=False)
     opis = models.TextField(blank=True)
 
     class Meta:
         verbose_name_plural = "Cele miesięczne"
 
+    def __str__(self):
+        return f"{self.nazwa}";
     
 
