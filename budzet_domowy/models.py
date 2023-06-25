@@ -55,17 +55,17 @@ class Wydatki(models.Model):
 
 
 class Przychody(models.Model):
-    nazwa_przychodu = models.CharField(max_length=100, unique=False)
-    przychod = models.FloatField()
+    nazwa_przychodu = models.CharField(max_length=100, null=False)
+    przychod = models.FloatField(null=False)
 
     class Meta:
         verbose_name_plural = "Przychody"
 
     def __str__(self):
-        return f"{self.nazwa_przychodu}"
+        return f"{self.nazwa_przychodu} - {self.przychod} zł"
 
 class Przychod(models.Model):
-    nazwa_przychodu = models.CharField(max_length=100, unique=False)
+    nazwa_przychodu = models.CharField(max_length=100)
     przychod = models.FloatField()
 
     class Meta:

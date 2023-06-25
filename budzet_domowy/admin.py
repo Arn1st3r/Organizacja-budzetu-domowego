@@ -13,8 +13,8 @@ class PersonAdmin(admin.ModelAdmin):
     list_filter = ['imie', 'nazwisko']
 
 class WydatkiAdmin(admin.ModelAdmin):
-    search_fields = ['kwota', 'kategoria']
-    list_filter = ['kategoria']
+    search_fields = ['kwota', 'kategoria', 'miesiac', 'rok']
+    list_filter = ['kategoria', 'miesiac', 'rok']
 
 class PrzychodyAdmin(admin.ModelAdmin):
     search_fields = ['nazwa_przychodu']
