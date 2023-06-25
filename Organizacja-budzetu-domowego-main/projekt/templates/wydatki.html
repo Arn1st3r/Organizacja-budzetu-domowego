@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Organizacja budżetu domowego | Wydatki</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        table,
+        td,
+        th {
+            border: 2px solid orange;
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        nav {
+            background-color: lightgray;
+            border: 3px solid orange;
+        }
+
+        ul.menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.menu li {
+            margin-right: 50px;
+        }
+
+        ul.menu li:last-child {
+            margin-right: 0;
+        }
+
+        ul.menu li a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        ul.menu li a:hover {
+            background-color: orange;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 250px;
+        }
+
+        input,
+        select {
+            padding-top: 10px;
+            width: 100%;
+            border-radius: 8px;
+            border: 2px solid orange;
+        }
+
+        select {
+            width: 103%;
+        }
+
+        button {
+            border-radius: 8px;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: orange;
+        }
+
+        .reset {
+            margin-left: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="/admin">Strona główna</a></li>
+            <li><a href="">Wydatki</a></li>
+            <li><a href="/przychody">Przychody</a></li>
+            <li><a href="/admin">Panel admina</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="form">
+            <h1>Wydatki</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Dodaj</button>
+                <button class="reset" onclick=form_alert() type="reset">Wyczyść</button>
+            </form>
+        </div>
+        <div class="summary">
+            <h1>Suma wydatków:</h1>
+            <table>
+                <tr>
+                    <th>Kategoria</th>
+                    <th>Suma</th>
+                </tr>
+                {% for entry in kwota_per_category %}
+                <tr>
+                    <td>{{ entry.kategoria }}</td>
+                    <td>{{ entry.total_kwota }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <script>
+        function form_alert() {
+            alert("Przychód wysłany!")
+        }
+    </script>
+</body>
+
+</html>

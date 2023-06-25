@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Organizacja budżetu domowego</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+    <h1>Liczba: {{liczba_osob}}</h1>
+    <div class="blok">
+        
+    </div>
+    <script>
+        const blok = document.querySelector("blok")
+        const button = document.querySelector('button')
+        button.addEventListener("click", () => {
+            button.style.backgroundColor = 'blue'
+        })
+
+    </script>
+</body>
+
+</html>
