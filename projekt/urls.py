@@ -14,11 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
+from django.conf import settings
 
+from django.contrib import admin
+from budzet_domowy.views import statistics_view;
+from django.conf.urls.static import static
+from budzet_domowy.views import wydatki_view, przychody_view;
+
+
+from django.urls import path
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-]
+    path('admin/', admin.site.urls),
+    path('',statistics_view, name='home'),
+    path('wydatki/', wydatki_view, name='wydatki'),
+    path('przychody/', przychody_view, name='przychody')
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.site_header = "Admin panel"
 admin.site.site_title = "Admin panel"
