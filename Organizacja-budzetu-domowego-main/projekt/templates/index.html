@@ -48,7 +48,8 @@
         .container {
             display: flex;
             justify-content: center;
-            gap: 250px;
+            align-items: center;
+            flex-direction: column;
         }
 
         input,
@@ -82,7 +83,16 @@
             background-color: lightgray;
             height: 55px;
             text-align: center;
-            margin-top: 55vh;
+            margin-top: 48vh;
+        }
+
+        h1 {
+            margin-top: 60px;
+        }
+
+        .main_paragraph {
+            width: 40%;
+            text-align: center;
         }
     </style>
 </head>
@@ -98,6 +108,16 @@
     </nav>
     <div class="container">
         <h1>Organizacja Budżetu Domowego</h1>
+        <p class="main_paragraph">Aplikacja do organizacji budżetu domowego to funkcjonalne narzędzie, które umożliwia
+            skuteczną kontrolę nad
+            finansami osobistymi. Zapewnia wiele przydatnych funkcji, które ułatwiają zarządzanie budżetem i pomagają w
+            osiąganiu finansowych celów.</p>
+        <h2>Podsumowanie budżetu</h2>
+        <h3>Różnica między przychodami a wydatkami dla każdego miesiąca:</h3>
+        {% for entry in roznica_per_month %}
+        <p>Miesiąc: {{ entry.miesiac }}, Różnica: {{ entry.roznica }} zł</p>
+        {% endfor %}
+
     </div>
     <footer>
         <p>Created by Rafał Arnista</p>
