@@ -1,0 +1,7 @@
+{
+  "tests.py::test_lista_lat_model": true,
+  "tests.py::test_lista_miesiecy_model": true,
+  "tests.py::test_person_model": true,
+  "tests.py::test_przychody_model": true,
+  "tests.py::test_wydatki_model": true
+}

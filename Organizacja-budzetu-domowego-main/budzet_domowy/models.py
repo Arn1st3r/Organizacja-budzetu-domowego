@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.core import validators
 from django.core.validators import MinValueValidator
+
 
 class Person(models.Model):
     imie = models.CharField(max_length=30, blank=False, validators=[
