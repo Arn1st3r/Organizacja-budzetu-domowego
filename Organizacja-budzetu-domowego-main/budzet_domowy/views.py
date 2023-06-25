@@ -50,9 +50,8 @@ def wydatki_view(request):
 
 
 def statistics_view(request):
-    liczba_osob = Wydatki.objects.filter(kategoria_id = 1).aggregate(Sum('kwota'))
     context = {
-        'liczba_osob': f"{liczba_osob['kwota__sum']} pln"
+        
     }
     return render(request, 'index.html', context)
 

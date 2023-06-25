@@ -3,26 +3,105 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
-    <title>Organizacja budżetu domowego</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizacja budżetu domowego | Strona główna</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        nav {
+            background-color: lightgray;
+            border: 3px solid orange;
+        }
+
+        ul.menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.menu li {
+            margin-right: 50px;
+        }
+
+        ul.menu li:last-child {
+            margin-right: 0;
+        }
+
+        ul.menu li a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        ul.menu li a:hover {
+            background-color: orange;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 250px;
+        }
+
+        input,
+        select {
+            padding-top: 10px;
+            width: 100%;
+            border-radius: 8px;
+            border: 2px solid orange;
+        }
+
+        select {
+            width: 103%;
+        }
+
+        button {
+            border-radius: 8px;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: orange;
+        }
+
+        .reset {
+            margin-left: 160px;
+        }
+
+        footer {
+            width: 99.8%;
+            border: 2px solid orange;
+            background-color: lightgray;
+            height: 55px;
+            text-align: center;
+            margin-top: 55vh;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Liczba: {{liczba_osob}}</h1>
-    <div class="blok">
-        
+    <nav>
+        <ul class="menu">
+            <li><a href="/">Strona główna</a></li>
+            <li><a href="/wydatki">Wydatki</a></li>
+            <li><a href="/przychody">Przychody</a></li>
+            <li><a href="/admin">Panel admina</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Organizacja Budżetu Domowego</h1>
     </div>
-    <script>
-        const blok = document.querySelector("blok")
-        const button = document.querySelector('button')
-        button.addEventListener("click", () => {
-            button.style.backgroundColor = 'blue'
-        })
-
-    </script>
+    <footer>
+        <p>Created by Rafał Arnista</p>
+    </footer>
 </body>
 
 </html>

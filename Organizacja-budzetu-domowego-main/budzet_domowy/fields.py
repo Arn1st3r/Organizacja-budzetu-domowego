@@ -19,7 +19,5 @@ class PrzychodyForm(forms.ModelForm):
             'przychod',
             'miesiac',
             'rok'
-            
-            
         ]
         
