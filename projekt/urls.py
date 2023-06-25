@@ -19,14 +19,15 @@ from django.conf import settings
 from django.contrib import admin
 from budzet_domowy.views import statistics_view;
 from django.conf.urls.static import static
-from budzet_domowy.views import wydatki_utworz_widok;
+from budzet_domowy.views import wydatki_view, przychody_view;
 
 
 from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',statistics_view, name='home'),
-    path('wydatki/', wydatki_utworz_widok, name='wydatki'),
+    path('wydatki/', wydatki_view, name='wydatki'),
+    path('przychody/', przychody_view, name='przychody')
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.site_header = "Admin panel"

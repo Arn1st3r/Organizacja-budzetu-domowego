@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Wydatki
+from .models import Wydatki,Przychody
 
 class WydatkiForm(forms.ModelForm):
     class Meta:
@@ -7,5 +7,15 @@ class WydatkiForm(forms.ModelForm):
         fields = [
             'kwota',
             'kategoria',
+        ]
+
+class PrzychodyForm(forms.ModelForm):
+    class Meta:
+        model = Przychody
+        fields = [
+            'nazwa_przychodu',
+            'przychod',
+            
             
         ]
+        
